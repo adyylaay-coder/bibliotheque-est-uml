@@ -1,0 +1,20 @@
+@startuml BibliothequeEST
+
+class Utilisateur {}
+class Etudiant {}
+class Bibliothecaire {}
+class Ouvrage {
+  + isbn : String
+  + titre : String
+}
+class Exemplaire {
+  + code : String
+  + disponible : Boolean
+  + emprunter() 
+  + retourner()
+}
+class Emprunt {
+  + dateEmprunt : Date
+}
+
+@enduml
