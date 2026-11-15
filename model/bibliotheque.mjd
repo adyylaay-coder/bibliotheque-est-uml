@@ -1,0 +1,13 @@
+{
+  "_type": "Project",
+  "_id": "AAAAAAF1",
+  "name": "BibliothequeEST",
+  "ownedElements": [
+    {
+      "_type": "UMLModel",
+      "_id": "AAAAAAF2",
+      "name": "Model",
+      "ownedElements": []
+    }
+  ]
+}
