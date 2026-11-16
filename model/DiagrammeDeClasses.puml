@@ -1,0 +1,52 @@
+@startuml DiagrammeDeClasses
+title DiagrammeDeClasses
+skinparam classAttributeIconSize 0
+
+class Utilisateur {
+  - nom : String
+  - email : String
+  + seConnecter() : Boolean
+}
+
+class Etudiant {
+  - cne : String
+}
+
+class Bibliothecaire {
+  - matricule : String
+}
+
+class Livre {
+  - isbn : String
+  - titre : String
+  + estDisponible() : Boolean
+}
+
+class Exemplaire {
+  - code : String
+  - disponible : Boolean
+  + emprunter() : Boolean
+  + retourner() : void
+}
+
+class Emprunt {
+  - dateEmprunt : Date
+  - dateRetourPrevue : Date
+  + prolonger() : void
+}
+
+class Reservation {
+  - dateReservation : Date
+  + annuler() : void
+}
+
+Utilisateur <|-- Etudiant
+Utilisateur <|-- Bibliothecaire
+
+Livre "1" -- "1..*" Exemplaire : existe en
+Etudiant "1" -- "0..*" Emprunt : effectue
+Emprunt "0..*" -- "1" Exemplaire : concerne
+Etudiant "1" -- "0..*" Reservation : fait
+Reservation "0..*" -- "1" Livre : concerne
+
+@enduml
