@@ -1,0 +1,38 @@
+@startuml DiagrammeCasUtilisation
+title DiagrammeCasUtilisation
+left to right direction
+
+' Besoin : Un étudiant recherche et réserve des livres.
+' Le bibliothécaire enregistre les emprunts et les retours, et gère les livres.
+' L'administrateur gère les utilisateurs. Tous doivent se connecter.
+' Quand un exemplaire réservé est rendu, un service d'email externe
+' prévient l'étudiant.
+
+actor Etudiant
+actor Administrateur
+actor Bibliothecaire
+actor ServiceEmail <<système externe>>
+
+rectangle BibliothequeEST {
+  usecase "Rechercher un livre" as Rechercher
+  usecase "Réserver un livre" as Reserver
+  usecase "Se connecter" as Connecter
+  usecase "Gérer les utilisateurs" as GererUtilisateurs
+  usecase "Emprunter un exemplaire" as Emprunter
+  usecase "Retourner un exemplaire" as Retourner
+  usecase "Gérer les livres" as GererLivres
+}
+
+Etudiant -- Rechercher
+Etudiant -- Reserver
+Etudiant -- Connecter
+
+Administrateur -- GererUtilisateurs
+Administrateur -- Connecter
+
+Emprunter -- Bibliothecaire
+Retourner -- Bibliothecaire
+GererLivres -- Bibliothecaire
+Connecter -- Bibliothecaire
+
+@enduml
