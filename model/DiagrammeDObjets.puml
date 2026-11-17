@@ -1,0 +1,51 @@
+@startuml DiagrammeDObjets
+title DiagrammeDObjets
+
+' Scénario : Le 15 octobre 2026 à 10h30, Ahmed a emprunté
+' l'exemplaire BIB-002 du livre UML 2 en action.
+' À la même heure, Salma a emprunté l'exemplaire BIB-003 du même livre.
+
+object "ahmed : Etudiant" as ahmed {
+  nom = "Ahmed"
+  cne = "D130245678"
+}
+
+object "emprunt125 : Emprunt" as emprunt125 {
+  dateEmprunt = 15/10/2026
+  dateRetourPrevue = 29/10/2026
+}
+
+object "bib002 : Exemplaire" as bib002 {
+  code = "BIB-002"
+  disponible = false
+}
+
+object "uml2 : Livre" as uml2 {
+  isbn = "978-1-23456-001-2"
+  titre = "UML 2 en action"
+}
+
+object "salma : Etudiant" as salma {
+  nom = "Salma"
+  cne = "D130245679"
+}
+
+object "emprunt126 : Emprunt" as emprunt126 {
+  dateEmprunt = 15/10/2026
+  dateRetourPrevue = 29/10/2026
+}
+
+object "bib003 : Exemplaire" as bib003 {
+  code = "BIB-003"
+  disponible = false
+}
+
+ahmed -- emprunt125 : effectue
+emprunt125 -- bib002 : concerne
+uml2 -- bib002 : existe en
+
+salma -- emprunt126 : effectue
+emprunt126 -- bib003 : concerne
+uml2 -- bib003 : existe en
+
+@enduml
